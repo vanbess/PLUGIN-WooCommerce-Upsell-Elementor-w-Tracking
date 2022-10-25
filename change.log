@@ -1,0 +1,16 @@
+25 April 2022
+- Added support for tracking multiple upsell impressions, conversions etc
+- Added manual caching for upsell impressions to avoid server overload when tracking impressions (impressions updated every 5 minutes via custom chron job)
+- Added check for Polylang. Plugin init bails early if Polylang not installed, displaying admin error message, so that display issues on front-end is avoided.
+
+16 June 2022
+- Added discount percentage inputs for Single Product Upsells tracking, Cart Addons tracking, Checkout Addons tracking and Checkout Popups tracking items. If items present in session data and discount defined under tracking items, discount will be applied to item in cart/during checkout.
+
+14 September 2022
+- Converted plugin modules to compatibility with Riode theme and Elementor
+
+26 September 2022
+- Disable loading of Magnific CSS/JS via plugin as Riode/Elementor loads it already
+
+25 October 2022
+- Fixe duplicate funcation error by employing anonymous function to check for presence of Polylang to avoid errors for all module init files
