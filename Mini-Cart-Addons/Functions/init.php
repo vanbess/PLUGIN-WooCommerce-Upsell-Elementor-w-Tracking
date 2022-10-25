@@ -9,20 +9,6 @@ add_action('plugins_loaded', 'uv2_minicart_init');
 
 function uv2_minicart_init() {
 
-    // bail if Polylang is not installed and display error message
-    if (!function_exists('pll_current_language')) :
-
-        add_action('admin_notices', function () {
-            $class = 'notice notice-error';
-            $message = __('PLEASE NOTE: Polylang needs to be installed in order for Upsell V2 plugin and associated tracking to work properly.', 'woocommerce');
-
-            printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
-        });
-
-        return;
-
-    endif;
-
     // check for existence of woocommerce
     if (class_exists('WooCommerce')) :
 

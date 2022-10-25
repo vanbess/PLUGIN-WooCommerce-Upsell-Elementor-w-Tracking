@@ -13,4 +13,4 @@
 - Disable loading of Magnific CSS/JS via plugin as Riode/Elementor loads it already
 
 25 October 2022
-- Fixe duplicate funcation error by employing anonymous function to check for presence of Polylang to avoid errors for all module init files
+- Use one function to check for Polylang and throw error if absent, instead of multiple

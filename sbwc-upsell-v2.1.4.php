@@ -21,6 +21,23 @@ define('UPSELL_V2_PATH', plugin_dir_path(__FILE__));
 include UPSELL_V2_PATH . 'Settings/admin-settings.php';
 include UPSELL_V2_PATH . 'Settings/save-settings.php';
 
+/**
+ * If Polylang not installed, bail
+ */
+if (!function_exists('pll_current_language')) :
+
+    add_action('admin_notices', function () {
+        $class = 'notice notice-error';
+        $message = __('<b><u>PLEASE NOTE:</u> Polylang needs to be installed and tracking custom post types added to <i>Language -> Settings -> Custom post types and Taxonomies page</i> in order for Upsell V2 plugin and associated tracking to work properly.</b>', 'woocommerce');
+
+        printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
+    });
+
+    return;
+
+endif;
+
+
 add_action('admin_enqueue_scripts', 'uv2_admin_scripts');
 
 function uv2_admin_scripts() {

@@ -9,20 +9,6 @@ add_action('plugins_loaded', 'uv2_co_popup_init');
 
 function uv2_co_popup_init() {
 
-    // bail if Polylang is not installed and display error message
-    if (!function_exists('pll_current_language')) :
-
-        add_action('admin_notices', function () {
-            $class = 'notice notice-error';
-            $message = __('<b><u>PLEASE NOTE:</u> Polylang needs to be installed and tracking custom post types added to <i>Language -> Settings -> Custom post types and Taxonomies page</i> in order for Upsell V2 plugin and associated tracking to work properly.</b>', 'woocommerce');
-
-            printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
-        });
-
-        return;
-
-    endif;
-
     // check for existence of woocommerce
     if (class_exists('WooCommerce')) :
 
