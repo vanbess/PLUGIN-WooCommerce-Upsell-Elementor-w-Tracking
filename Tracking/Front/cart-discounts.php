@@ -1,11 +1,21 @@
 <?php
 
 /**
+ * Start session if not started before headers are sent
+ */
+add_action('init', function () {
+
+    // double check if session is started so that we don't run into issues further down the line
+    if (!session_id()) :
+        session_start();
+    endif;
+});
+
+/**
  * Apply cart discounts for upsells as needed
  */
 
-function retrieve_tracking_discount($post_type, $upsell_id)
-{
+function retrieve_tracking_discount($post_type, $upsell_id) {
 
     // setup discount query
     $tracking_query = new WP_Query([
@@ -40,8 +50,7 @@ function retrieve_tracking_discount($post_type, $upsell_id)
  */
 add_action('woocommerce_before_calculate_totals', 'upsellv2_single_upsell_discount');
 
-function upsellv2_single_upsell_discount($cart)
-{
+function upsellv2_single_upsell_discount($cart) {
 
     // bail if admin and not doing ajax
     if (is_admin() && !defined('DOING_AJAX')) :
@@ -54,9 +63,9 @@ function upsellv2_single_upsell_discount($cart)
     endif;
 
     // double check if session is started so that we don't run into issues further down the line
-    if (!session_id()) :
-        session_start();
-    endif;
+    // if (!session_id()) :
+    //     session_start();
+    // endif;
 
     // retrieve session upsells
     $single_product_upsell_ids = isset($_SESSION['product_single_upsell_ids']) ? array_unique($_SESSION['product_single_upsell_ids']) : [];
@@ -97,8 +106,7 @@ function upsellv2_single_upsell_discount($cart)
  */
 add_action('woocommerce_before_calculate_totals', 'upsellv2_cart_upsell_discount');
 
-function upsellv2_cart_upsell_discount($cart)
-{
+function upsellv2_cart_upsell_discount($cart) {
 
     // bail if admin and not doing ajax
     if (is_admin() && !defined('DOING_AJAX')) :
@@ -111,9 +119,9 @@ function upsellv2_cart_upsell_discount($cart)
     endif;
 
     // double check if session is started so that we don't run into issues further down the line
-    if (!session_id()) :
-        session_start();
-    endif;
+    // if (!session_id()) :
+    //     session_start();
+    // endif;
 
     // retrieve session upsells
     $cart_upsell_ids = isset($_SESSION['cart_upsell_ids']) ? array_unique($_SESSION['cart_upsell_ids']) : [];
@@ -154,8 +162,7 @@ function upsellv2_cart_upsell_discount($cart)
  */
 add_action('woocommerce_before_calculate_totals', 'upsellv2_checkout_upsell_discount');
 
-function upsellv2_checkout_upsell_discount($cart)
-{
+function upsellv2_checkout_upsell_discount($cart) {
 
     // bail if admin and not doing ajax
     if (is_admin() && !defined('DOING_AJAX')) :
@@ -168,9 +175,9 @@ function upsellv2_checkout_upsell_discount($cart)
     endif;
 
     // double check if session is started so that we don't run into issues further down the line
-    if (!session_id()) :
-        session_start();
-    endif;
+    // if (!session_id()) :
+    //     session_start();
+    // endif;
 
     // retrieve session upsells
     $checkout_upsell_ids = isset($_SESSION['checkout_upsell_ids']) ? array_unique($_SESSION['checkout_upsell_ids']) : [];
@@ -211,8 +218,7 @@ function upsellv2_checkout_upsell_discount($cart)
  */
 add_action('woocommerce_before_calculate_totals', 'upsellv2_checkout_popup_discount');
 
-function upsellv2_checkout_popup_discount($cart)
-{
+function upsellv2_checkout_popup_discount($cart) {
 
     // bail if admin and not doing ajax
     if (is_admin() && !defined('DOING_AJAX')) :
@@ -225,9 +231,9 @@ function upsellv2_checkout_popup_discount($cart)
     endif;
 
     // double check if session is started so that we don't run into issues further down the line
-    if (!session_id()) :
-        session_start();
-    endif;
+    // if (!session_id()) :
+    //     session_start();
+    // endif;
 
     // retrieve session upsells
     $popup_upsell_ids = isset($_SESSION['popup_upsell_ids']) ? array_unique($_SESSION['popup_upsell_ids']) : [];

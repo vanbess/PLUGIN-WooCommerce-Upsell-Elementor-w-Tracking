@@ -7,8 +7,7 @@
  */
 add_action('woocommerce_after_cart_table', 'upsell_v2_cart_addons');
 
-function upsell_v2_cart_addons()
-{
+function upsell_v2_cart_addons() {
 
     // add language check for new upsell tracking setup
     $current_lang = pll_current_language();
@@ -17,7 +16,7 @@ function upsell_v2_cart_addons()
     $cart_addons = maybe_unserialize(get_option('upsell_v2_cart_addons'));
 
     // check if products exist for current lang, else bail
-    if (key_exists($current_lang, $cart_addons)) :
+    if ($cart_addons && key_exists($current_lang, $cart_addons)) :
         $upsell_ids = explode(',', $cart_addons[$current_lang]);
     else :
         return;

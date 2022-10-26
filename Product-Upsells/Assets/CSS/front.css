@@ -9,6 +9,14 @@
 .product-buy-now{
     position: relative;
     left: 10px;
+    top: 10px;
+    width: 48%;
+}
+
+button.single_add_to_cart_button.button.alt {
+    width: 48%;
+    top: 10px;
+    position: relative;
 }
 
 h5#upsell-v2-product-upsell-title {

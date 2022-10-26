@@ -14,3 +14,8 @@
 
 25 October 2022
 - Use one function to check for Polylang and throw error if absent, instead of multiple
+
+26 October 2022
+- Fix issue with session_start() for tracking functionality on cart page being called after headers have been sent
+- Added check to Cart-Addons/Functions/Front/cart.php:19 to check for existence of get_option('upsell_v2_cart_addons') before checking for existence of key in array
+- Fix CSS issues for product single upsell add to cart/buy now buttons
