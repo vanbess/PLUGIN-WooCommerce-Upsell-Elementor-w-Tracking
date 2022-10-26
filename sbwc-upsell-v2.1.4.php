@@ -56,11 +56,11 @@ function uv2_admin_scripts() {
     wp_enqueue_script('uv2-admin-js', UPSELL_V2_URI . 'Settings/upsellv2.admin.js', ['jquery'], false, true);
 }
 
-// add_action('wp_enqueue_scripts', 'uv2_magnific_enqueue');
+add_action('wp_enqueue_scripts', 'uv2_magnific_enqueue');
 
-// function uv2_magnific_enqueue() {
-//     wp_enqueue_script('pu-magnific', UPSELL_V2_URI . 'Assets/JS/magnific.js', ['jquery'], '1.1.0');
-// }
+function uv2_magnific_enqueue() {
+    wp_enqueue_script('pu-magnific', UPSELL_V2_URI . 'Assets/JS/magnific.js', ['jquery'], '1.1.0');
+}
 
 /**
  * INIT MODULES
